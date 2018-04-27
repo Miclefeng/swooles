@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4e21ce29-08f3-4af7-b936-3d629cb24c27" name="swoole" url="http://micle.swoole.com">
+        <fileTransfer host="micle.swoole.com" port="22" rootFolder="/data/wwwroot/default/swoole" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

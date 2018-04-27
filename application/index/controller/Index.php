@@ -5,11 +5,11 @@ class Index
 {
     public function index()
     {
-        return 'miclefengzss';
+        echo 'Miclefeng__'.$_GET['name'];
     }
 
-    public function hello($name = 'miclefengzss')
+    public function hello()
     {
-        return "Hello {$name}";
+        return "Hello {$_GET['name']}";
     }
 }
