@@ -5,7 +5,7 @@ class Index
 {
     public function index()
     {
-        echo 'Miclefeng__'.$_GET['name'];
+        return 'Miclefeng__'.$_GET['name'];
     }
 
     public function hello()
