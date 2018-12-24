@@ -41,7 +41,7 @@ $http->on('request', function (swoole_http_request $req, swoole_http_response $r
 
     ob_start();
     try {
-        echo \think\App::run()->send(). " Action : ".request()->action();
+        echo \think\App::run()->send();
     } catch (Exception $e) {
         echo $e->getMessage();
     }

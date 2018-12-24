@@ -383,7 +383,7 @@ class Request
      */
     public function pathinfo()
     {
-//        if (is_null($this->pathinfo)) {
+        if (is_null($this->pathinfo)) {
             if (isset($_GET[Config::get('var_pathinfo')])) {
                 // 判断URL里面是否有兼容模式参数
                 $_SERVER['PATH_INFO'] = $_GET[Config::get('var_pathinfo')];
@@ -404,7 +404,7 @@ class Request
                 }
             }
             $this->pathinfo = empty($_SERVER['PATH_INFO']) ? '/' : ltrim($_SERVER['PATH_INFO'], '/');
-//        }
+        }
         return $this->pathinfo;
     }
 
@@ -415,7 +415,7 @@ class Request
      */
     public function path()
     {
-//        if (is_null($this->path)) {
+        if (is_null($this->path)) {
             $suffix   = Config::get('url_html_suffix');
             $pathinfo = $this->pathinfo();
             if (false === $suffix) {
@@ -428,7 +428,7 @@ class Request
                 // 允许任何后缀访问
                 $this->path = preg_replace('/\.' . $this->ext() . '$/i', '', $pathinfo);
             }
-//        }
+        }
         return $this->path;
     }
 
@@ -1342,14 +1342,18 @@ class Request
     /**
      * 当前请求的host
      * @access public
+     * @param bool $strict  true 仅仅获取HOST
      * @return string
      */
-    public function host()
+    public function host($strict = false)
     {
         if (isset($_SERVER['HTTP_X_REAL_HOST'])) {
-            return $_SERVER['HTTP_X_REAL_HOST'];
+            $host = $_SERVER['HTTP_X_REAL_HOST'];
+        } else {
+            $host = $this->server('HTTP_HOST');
         }
-        return $this->server('HTTP_HOST');
+
+        return true === $strict && strpos($host, ':') ? strstr($host, ':', true) : $host;
     }
 
     /**
